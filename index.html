@@ -250,7 +250,7 @@
     .gallery-intro { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 52px; gap: 40px; flex-wrap: wrap; }
     .gallery-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: 280px 280px; gap: 10px;
+      grid-auto-rows: 280px; gap: 10px;
     }
     .gallery-item { position: relative; overflow: hidden; cursor: pointer; background: var(--cream); }
     .gallery-item:first-child { grid-column: 1; grid-row: 1 / 3; }
@@ -753,40 +753,40 @@
     </div>
     <div class="gallery-grid stagger" id="gallery-grid">
       <div class="gallery-item" onclick="openLightbox(0)">
-        <!-- <img src="photos/photo1.jpg" alt="Lawn Transformation"> -->
-        <div class="gallery-placeholder">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="32" height="24" rx="2"/><circle cx="14" cy="18" r="4"/><path d="M4 28 l10-10 6 6 6-8 10 12"/></svg>
-          <span>Drop photo here</span>
-        </div>
-        <div class="gallery-overlay"><span class="gallery-caption">Lawn Transformation</span></div>
+        <img src="1.jpg" alt="Stepping Stone Pathway">
+        <div class="gallery-overlay"><span class="gallery-caption">Stepping Stone Pathway</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(1)">
-        <div class="gallery-placeholder">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="32" height="24" rx="2"/><circle cx="14" cy="18" r="4"/><path d="M4 28 l10-10 6 6 6-8 10 12"/></svg>
-          <span>Drop photo here</span>
-        </div>
-        <div class="gallery-overlay"><span class="gallery-caption">Tree Trimming</span></div>
+        <img src="2.jpg" alt="Mulch Bed Installation">
+        <div class="gallery-overlay"><span class="gallery-caption">Mulch Bed Installation</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(2)">
-        <div class="gallery-placeholder">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="32" height="24" rx="2"/><circle cx="14" cy="18" r="4"/><path d="M4 28 l10-10 6 6 6-8 10 12"/></svg>
-          <span>Drop photo here</span>
-        </div>
-        <div class="gallery-overlay"><span class="gallery-caption">Hardscaping</span></div>
+        <img src="3.jpg" alt="Lawn Prep & Grading">
+        <div class="gallery-overlay"><span class="gallery-caption">Lawn Prep & Grading</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(3)">
-        <div class="gallery-placeholder">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="32" height="24" rx="2"/><circle cx="14" cy="18" r="4"/><path d="M4 28 l10-10 6 6 6-8 10 12"/></svg>
-          <span>Drop photo here</span>
-        </div>
-        <div class="gallery-overlay"><span class="gallery-caption">Landscape Design</span></div>
+        <img src="4.jpg" alt="Backyard Lawn Care">
+        <div class="gallery-overlay"><span class="gallery-caption">Backyard Lawn Care</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(4)">
-        <div class="gallery-placeholder">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="32" height="24" rx="2"/><circle cx="14" cy="18" r="4"/><path d="M4 28 l10-10 6 6 6-8 10 12"/></svg>
-          <span>Drop photo here</span>
-        </div>
-        <div class="gallery-overlay"><span class="gallery-caption">Seasonal Cleanup</span></div>
+        <img src="5.jpg" alt="Sod Installation">
+        <div class="gallery-overlay"><span class="gallery-caption">Sod Installation</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(5)">
+        <img src="6.jpg" alt="Lawn Mowing & Edging">
+        <div class="gallery-overlay"><span class="gallery-caption">Lawn Mowing & Edging</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(6)">
+        <img src="7.jpg" alt="Backyard Cleanup">
+        <div class="gallery-overlay"><span class="gallery-caption">Backyard Cleanup</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(7)">
+        <img src="8.jpg" alt="Landscape & Hardscape">
+        <div class="gallery-overlay"><span class="gallery-caption">Landscape & Hardscape</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(8)">
+        <img src="9.jpg" alt="Lawn Maintenance">
+        <div class="gallery-overlay"><span class="gallery-caption">Lawn Maintenance</span></div>
       </div>
     </div>
   </div>
@@ -1119,11 +1119,15 @@ function toggleFaq(btn) {
 
 // ── Gallery lightbox
 const galleryImages = [
-  { src: '', caption: 'Lawn Transformation' },
-  { src: '', caption: 'Tree Trimming' },
-  { src: '', caption: 'Hardscaping' },
-  { src: '', caption: 'Landscape Design' },
-  { src: '', caption: 'Seasonal Cleanup' },
+  { src: '1.jpg', caption: 'Stepping Stone Pathway' },
+  { src: '2.jpg', caption: 'Mulch Bed Installation' },
+  { src: '3.jpg', caption: 'Lawn Prep & Grading' },
+  { src: '4.jpg', caption: 'Backyard Lawn Care' },
+  { src: '5.jpg', caption: 'Sod Installation' },
+  { src: '6.jpg', caption: 'Lawn Mowing & Edging' },
+  { src: '7.jpg', caption: 'Backyard Cleanup' },
+  { src: '8.jpg', caption: 'Landscape & Hardscape' },
+  { src: '9.jpg', caption: 'Lawn Maintenance' },
 ];
 let currentLightbox = 0;
 function openLightbox(i) {
