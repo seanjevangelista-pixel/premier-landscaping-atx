@@ -18,7 +18,7 @@ export default async function handler(req, res) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
       body: JSON.stringify({
-        from: 'Premier Landscaping ATX <onboarding@resend.dev>',
+        from: 'Premier Landscaping ATX <quotes@premierlandscapingatx.com>',
         to: ['premierlandscapingatx@gmail.com'],
         reply_to: email || undefined,
         subject: `New Quote Request — ${service}`,
