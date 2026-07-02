@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.premierlandscapingatx.com/sitemap.xml
