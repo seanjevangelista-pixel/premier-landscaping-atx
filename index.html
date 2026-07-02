@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Premier Landscaping ATX — Austin's Trusted Lawn & Landscape Experts</title>
   <meta name="description" content="Premier Landscaping ATX provides professional lawn care, tree trimming, irrigation, hardscaping, and landscape design across Austin and all Central Texas counties. Free estimates. Call (512) 923-0307.">
+  <link rel="icon" href="logo-icon.png" type="image/png">
+  <link rel="apple-touch-icon" href="logo-icon.png">
 
   <!-- Open Graph / Social sharing -->
   <meta property="og:type" content="website">
@@ -638,6 +640,107 @@
       position: fixed; top: 0; left: 0; height: 2px; z-index: 300;
       background: var(--green-vivid); width: 0%; transition: width 0.1s linear;
     }
+
+    /* ── ENHANCED ANIMATIONS ── */
+
+    /* Pulse glow on every Call Now button */
+    @keyframes callPulse {
+      0%   { box-shadow: 0 0 0 0 rgba(184,151,58,0.7); }
+      60%  { box-shadow: 0 0 0 14px rgba(184,151,58,0); }
+      100% { box-shadow: 0 0 0 0 rgba(184,151,58,0); }
+    }
+    .cta-primary  { animation: callPulse 2.4s ease-out infinite; }
+    .cta-phone-btn { animation: callPulse 2.4s ease-out 0.4s infinite; }
+    .nav-cta { animation: callPulse 2.8s ease-out 0.8s infinite; }
+
+    /* Floating orbs in hero background */
+    @keyframes floatOrb {
+      0%,100% { transform: translateY(0) scale(1); opacity: 0.06; }
+      50%      { transform: translateY(-28px) scale(1.08); opacity: 0.1; }
+    }
+    .hero::after {
+      content: '';
+      position: absolute; width: 520px; height: 520px; border-radius: 50%;
+      background: radial-gradient(circle, var(--green-vivid), transparent 70%);
+      top: -120px; right: -80px; pointer-events: none;
+      animation: floatOrb 7s ease-in-out infinite;
+    }
+
+    /* Reveal animations — more dramatic */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-left  { opacity: 0; transform: translateX(-48px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-left.visible  { opacity: 1; transform: none; }
+    .reveal-right { opacity: 0; transform: translateX(48px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-right.visible { opacity: 1; transform: none; }
+    .reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
+    .stagger > * { opacity: 0; transform: translateY(28px); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+    .stagger.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0.05s; }
+    .stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.12s; }
+    .stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.19s; }
+    .stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.26s; }
+    .stagger.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:0.33s; }
+    .stagger.visible > *:nth-child(6) { opacity:1; transform:none; transition-delay:0.40s; }
+    .stagger.visible > *:nth-child(7) { opacity:1; transform:none; transition-delay:0.47s; }
+    .stagger.visible > *:nth-child(8) { opacity:1; transform:none; transition-delay:0.54s; }
+    .stagger.visible > *:nth-child(9) { opacity:1; transform:none; transition-delay:0.61s; }
+
+    /* Service card icon bounce on hover */
+    .service-icon { transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+    .service-card:hover .service-icon { transform: scale(1.18) rotate(-4deg); }
+
+    /* Why card slide-in border */
+    .why-card { position: relative; overflow: hidden; }
+    .why-card::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+      background: var(--gold); transform: scaleY(0); transform-origin: bottom;
+      transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+    }
+    .why-card:hover::before { transform: scaleY(1); }
+
+    /* Trust strip marquee shimmer */
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .trust-marquee-inner { display: flex; animation: marquee 22s linear infinite; }
+    .trust-marquee-inner:hover { animation-play-state: paused; }
+
+    /* CTA final section — subtle radial pulse */
+    @keyframes bgPulse {
+      0%,100% { background-position: 50% 50%; }
+      50%      { background-position: 52% 48%; }
+    }
+    .cta-final {
+      background: var(--green-deep);
+      background-image: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(82,168,75,0.08) 0%, transparent 70%);
+      animation: bgPulse 8s ease-in-out infinite;
+    }
+
+    /* Number counter shimmer */
+    .hero-stat .n { position: relative; display: inline-block; }
+    @keyframes goldShimmer {
+      0%   { color: #fff; text-shadow: none; }
+      50%  { color: var(--gold-light); text-shadow: 0 0 24px rgba(184,151,58,0.4); }
+      100% { color: #fff; text-shadow: none; }
+    }
+    .hero-loaded .hero-stat .n { animation: goldShimmer 3s ease-in-out infinite; }
+    .hero-loaded .hero-stat:nth-child(2) .n { animation-delay: 1s; }
+    .hero-loaded .hero-stat:nth-child(3) .n { animation-delay: 2s; }
+
+    /* Gallery item caption slide-up */
+    .gallery-overlay { transform: translateY(100%); transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), opacity 0.35s; }
+    .gallery-item:hover .gallery-overlay { transform: translateY(0); opacity: 1; }
+
+    /* Testimonial card border glow on hover */
+    .testimonial-card { transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s, border-color 0.3s; }
+    .testimonial-card:not(.testimonial-featured):hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(14,36,24,0.12);
+      border-color: var(--gold);
+    }
+
+    /* CTA estimate button arrow slide */
+    .cta-estimate-btn span { display: inline-block; transition: transform 0.2s; }
+    .cta-estimate-btn:hover span { transform: translateX(6px); }
   </style>
 </head>
 <body>
@@ -658,10 +761,8 @@
     <a href="#services">Services</a>
     <a href="#gallery">Gallery</a>
     <a href="#testimonials">Reviews</a>
-    <a href="#area">Service Area</a>
-    <a href="#faq">FAQ</a>
     <a href="#contact">Contact</a>
-    <a href="tel:5129230307" class="nav-cta">Call (512) 923-0307</a>
+    <a href="tel:5129230307" class="nav-cta" onclick="trackCall('nav')">Call (512) 923-0307</a>
   </div>
   <button class="nav-toggle" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Menu">
     <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -676,7 +777,7 @@
     <p class="hero-sub">Full-service landscaping across Austin and all surrounding Central Texas counties — built on craftsmanship and trust.</p>
     <div class="hero-divider"></div>
     <div class="hero-actions">
-      <a href="tel:5129230307" class="cta-primary">
+      <a href="tel:5129230307" class="cta-primary" onclick="trackCall('hero')">
         Call (512) 923-0307 <span class="arrow">→</span>
       </a>
       <a href="#contact" class="cta-secondary">
@@ -766,7 +867,7 @@
           <div class="why-panel-item">Crew arrives on schedule, works clean</div>
           <div class="why-panel-item">Job complete — you approve before we leave</div>
         </div>
-        <a href="tel:5129230307" class="cta-primary" style="width:100%;justify-content:center">
+        <a href="tel:5129230307" class="cta-primary" style="width:100%;justify-content:center" onclick="trackCall('why')">
           Schedule a Visit <span class="arrow">→</span>
         </a>
       </div>
@@ -889,7 +990,7 @@
       </div>
     </div>
     <div class="reviews-link">
-      <a href="https://g.page/r/premierlandscapingatx/review" target="_blank" rel="noopener">
+      <a href="https://www.google.com/maps/search/Premier+Landscaping+ATX+Austin+TX" target="_blank" rel="noopener">
         See all Google Reviews &nbsp;→
       </a>
     </div>
@@ -903,7 +1004,7 @@
     <h2 class="cta-final-headline">Your Property Deserves<br><em>Premier Care.</em></h2>
     <p class="cta-final-sub">Most quotes are same-day. No contracts, no pressure — just honest work done right the first time.</p>
     <div class="cta-final-actions">
-      <a href="tel:5129230307" class="cta-phone-btn">
+      <a href="tel:5129230307" class="cta-phone-btn" onclick="trackCall('cta')">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
         (512) 923-0307
       </a>
@@ -927,7 +1028,7 @@
       <div class="contact-info">
         <div class="contact-item">
           <div class="contact-item-label">Phone</div>
-          <a href="tel:5129230307">(512) 923-0307</a>
+          <a href="tel:5129230307" onclick="trackCall('contact')">(512) 923-0307</a>
         </div>
         <div class="contact-item">
           <div class="contact-item-label">Email</div>
@@ -1005,7 +1106,7 @@
       </div>
       <div class="footer-col">
         <h5>Contact</h5>
-        <a href="tel:5129230307">(512) 923-0307</a>
+        <a href="tel:5129230307" onclick="trackCall('contact')">(512) 923-0307</a>
         <a href="mailto:premierlandscapingatx@gmail.com">Email Us</a>
         <a href="#contact">Free Estimate</a>
       </div>
@@ -1027,7 +1128,7 @@
 
 <!-- ── FLOATING MOBILE CTA ── -->
 <div class="mobile-cta">
-  <a href="tel:5129230307">📞 Call Now</a>
+  <a href="tel:5129230307" onclick="trackCall('mobile')">📞 Call Now</a>
   <a href="#contact">Free Estimate</a>
 </div>
 
@@ -1193,6 +1294,17 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); document.getElementById('nav-links').classList.remove('open'); }
   });
 });
+
+// ── Call tracking — logs source + timestamp, emails Sean
+async function trackCall(source) {
+  try {
+    await fetch('/api/track-call', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ source, ts: new Date().toISOString(), ua: navigator.userAgent }),
+    });
+  } catch(_) {}
+}
 </script>
 </body>
 </html>

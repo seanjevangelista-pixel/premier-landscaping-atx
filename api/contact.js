@@ -19,7 +19,7 @@ export default async function handler(req, res) {
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
       body: JSON.stringify({
         from: 'Premier Landscaping ATX <quotes@premierlandscapingatx.com>',
-        to: ['premierlandscapingatx@gmail.com'],
+        to: ['premierlandscapingatx@gmail.com', 'seanjevangelista@gmail.com'],
         reply_to: email || undefined,
         subject: `New Quote Request — ${service}`,
         html: `
