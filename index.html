@@ -378,13 +378,46 @@
     .faq-item.open .faq-a { max-height: 300px; }
 
     /* ── CTA BANNER ── */
-    .cta-banner {
-      background: var(--gold); padding: 72px 6%;
-      display: flex; align-items: center; justify-content: space-between; gap: 40px;
+    /* ── NEW CTA FINAL ── */
+    .cta-final { background: var(--green-deep); padding: 110px 6%; text-align: center; }
+    .cta-final-inner { max-width: 780px; margin: 0 auto; }
+    .cta-final-badge {
+      display: inline-block; font-family: var(--font-ui); font-size: 11px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold);
+      border: 1px solid rgba(184,151,58,0.4); padding: 8px 20px; border-radius: 40px;
+      margin-bottom: 36px;
     }
-    .cta-banner-text h2 { color: var(--green-deep); font-style: italic; margin-bottom: 8px; }
-    .cta-banner-text p { font-size: 18px; color: rgba(14,36,24,0.7); max-width: none; }
-    .cta-banner-actions { display: flex; gap: 16px; align-items: center; flex-shrink: 0; }
+    .cta-final-headline {
+      font-family: var(--font-serif); font-size: clamp(40px, 6vw, 68px);
+      color: #fff; font-weight: 400; line-height: 1.1; margin-bottom: 24px;
+    }
+    .cta-final-headline em { color: var(--gold); font-style: italic; }
+    .cta-final-sub { font-size: 18px; color: rgba(255,255,255,0.65); max-width: 520px; margin: 0 auto 48px; line-height: 1.7; }
+    .cta-final-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+    .cta-phone-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--gold); color: var(--green-deep);
+      font-family: var(--font-ui); font-size: 18px; font-weight: 700;
+      padding: 20px 40px; border-radius: 2px; text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .cta-phone-btn:hover { background: #d4a93e; transform: translateY(-2px); }
+    .cta-estimate-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      border: 1.5px solid rgba(255,255,255,0.35); color: #fff;
+      font-family: var(--font-ui); font-size: 16px; font-weight: 500;
+      padding: 20px 36px; border-radius: 2px; text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .cta-estimate-btn:hover { border-color: #fff; background: rgba(255,255,255,0.06); }
+    .cta-final-trust {
+      display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;
+      font-family: var(--font-ui); font-size: 13px; font-weight: 500;
+      color: rgba(255,255,255,0.5); letter-spacing: 0.02em;
+    }
+    .cta-final-trust span { display: flex; align-items: center; gap: 6px; }
+    /* legacy — keep for any stray references */
+    .cta-banner { display: none; }
     .cta-dark {
       display: inline-flex; align-items: center; gap: 10px;
       background: var(--green-deep); color: #fff; padding: 18px 36px; border-radius: 2px;
@@ -863,107 +896,27 @@
   </div>
 </section>
 
-<!-- ── SERVICE AREA ── -->
-<section id="area">
-  <div class="section-inner">
-    <div class="area-intro reveal">
-      <div>
-        <div class="section-label">Where We Work</div>
-        <h2>All of Central<br><em>Texas.</em></h2>
-      </div>
-      <p class="section-sub">Based in Austin — we cover the full metro and every surrounding county. If you're in Central Texas, we come to you.</p>
-    </div>
-    <div class="county-grid stagger">
-      <div class="county-card"><div class="county-name">Travis</div><div class="county-cities">Austin · Manor · Pflugerville</div></div>
-      <div class="county-card"><div class="county-name">Williamson</div><div class="county-cities">Round Rock · Georgetown · Cedar Park</div></div>
-      <div class="county-card"><div class="county-name">Hays</div><div class="county-cities">Kyle · Buda · San Marcos · Wimberley</div></div>
-      <div class="county-card"><div class="county-name">Bastrop</div><div class="county-cities">Bastrop · Elgin · Smithville</div></div>
-      <div class="county-card"><div class="county-name">Caldwell</div><div class="county-cities">Lockhart · Luling</div></div>
-      <div class="county-card"><div class="county-name">Burnet</div><div class="county-cities">Burnet · Marble Falls</div></div>
-      <div class="county-card"><div class="county-name">Lee</div><div class="county-cities">Giddings · Lexington</div></div>
-      <div class="county-card"><div class="county-name">Llano</div><div class="county-cities">Llano · Kingsland</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ── FAQ ── -->
-<section id="faq">
-  <div class="section-inner">
-    <div class="faq-layout reveal">
-      <div class="faq-sidebar">
-        <div class="section-label">Common Questions</div>
-        <h2>Everything You<br><em>Need to Know</em></h2>
-        <p>Can't find your answer? Call us directly and we'll get back to you the same day.</p>
-        <a href="tel:5129230307" class="cta-primary" style="display:inline-flex">
-          Call Now <span class="arrow">→</span>
-        </a>
-      </div>
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            Do you offer free estimates?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-a"><div class="faq-a-inner">Yes — always. We'll come out to your property, assess what needs to be done, and give you a clear quote with no obligation. No hidden costs, no pressure.</div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            Are you licensed and insured?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-a"><div class="faq-a-inner">Yes. Premier Landscaping ATX is fully licensed and insured. Your property and our crew are protected on every job we take on.</div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            What areas do you serve?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-a"><div class="faq-a-inner">We serve all of Travis, Williamson, Hays, Bastrop, Caldwell, Burnet, Lee, and Llano counties — the full Central Texas region. If you're not sure whether we cover your area, just call and ask.</div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            How quickly can you get started?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-a"><div class="faq-a-inner">We aim to provide same-day or next-day response to all inquiries. Scheduling depends on the job and time of year, but we'll always give you an honest timeline upfront.</div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            Do you work with commercial properties?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-a"><div class="faq-a-inner">Absolutely. We service HOA communities, apartment complexes, retail centers, office parks, and other commercial properties across Central Texas. Contact us for a custom quote.</div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            What payment methods do you accept?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-a"><div class="faq-a-inner">We accept cash, check, Venmo, Zelle, and credit card. Payment is due upon completion of work unless other arrangements are made for recurring service.</div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            Can I set up recurring service?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-a"><div class="faq-a-inner">Yes — many of our clients are on weekly or bi-weekly maintenance plans. Recurring clients get priority scheduling. Ask about our maintenance packages when you call.</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ── CTA BANNER ── -->
-<div class="cta-banner">
-  <div class="cta-banner-text">
-    <h2>Ready for a Better-Looking Property?</h2>
-    <p>Get your free estimate today — no commitment, no pressure, just a straight answer.</p>
+<section class="cta-final reveal">
+  <div class="cta-final-inner">
+    <div class="cta-final-badge">Free Estimates · Licensed &amp; Insured · Serving All of Central Texas</div>
+    <h2 class="cta-final-headline">Your Property Deserves<br><em>Premier Care.</em></h2>
+    <p class="cta-final-sub">Most quotes are same-day. No contracts, no pressure — just honest work done right the first time.</p>
+    <div class="cta-final-actions">
+      <a href="tel:5129230307" class="cta-phone-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        (512) 923-0307
+      </a>
+      <a href="#contact" class="cta-estimate-btn">Request Free Estimate <span>→</span></a>
+    </div>
+    <div class="cta-final-trust">
+      <span>✓ Same-day response</span>
+      <span>✓ No hidden fees</span>
+      <span>✓ 8+ years experience</span>
+      <span>✓ 100% satisfaction</span>
+    </div>
   </div>
-  <div class="cta-banner-actions">
-    <a href="tel:5129230307" class="cta-dark">Call Now →</a>
-    <a href="#contact" class="cta-ghost">Request Online</a>
-  </div>
-</div>
+</section>
 
 <!-- ── CONTACT ── -->
 <section id="contact">
@@ -1054,9 +1007,15 @@
         <h5>Contact</h5>
         <a href="tel:5129230307">(512) 923-0307</a>
         <a href="mailto:premierlandscapingatx@gmail.com">Email Us</a>
-        <a href="#area">Service Area</a>
-        <a href="#faq">FAQ</a>
         <a href="#contact">Free Estimate</a>
+      </div>
+      <div class="footer-col">
+        <h5>Service Area</h5>
+        <span style="color:rgba(255,255,255,0.5);font-size:13px;line-height:1.8">
+          Travis · Williamson · Hays<br>
+          Bastrop · Caldwell · Burnet<br>
+          Lee · Llano Counties
+        </span>
       </div>
     </div>
     <div class="footer-bottom">
