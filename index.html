@@ -645,26 +645,26 @@
           <div class="form-row">
             <div class="form-group">
               <label>First Name *</label>
-              <input type="text" placeholder="John" required>
+              <input type="text" id="f-first" placeholder="John" required>
             </div>
             <div class="form-group">
-              <label>Last Name *</label>
-              <input type="text" placeholder="Smith" required>
+              <label>Last Name</label>
+              <input type="text" id="f-last" placeholder="Smith">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
               <label>Phone *</label>
-              <input type="tel" placeholder="(512) 555-0000" required>
+              <input type="tel" id="f-phone" placeholder="(512) 555-0000" required>
             </div>
             <div class="form-group">
               <label>Email</label>
-              <input type="email" placeholder="john@email.com">
+              <input type="email" id="f-email" placeholder="john@email.com">
             </div>
           </div>
           <div class="form-group">
             <label>Service Needed *</label>
-            <select required>
+            <select id="f-service" required>
               <option value="">Select a service…</option>
               <option>Lawn Care & Maintenance</option>
               <option>Tree Trimming & Removal</option>
@@ -679,12 +679,13 @@
           </div>
           <div class="form-group">
             <label>City / Neighborhood</label>
-            <input type="text" placeholder="Austin, TX">
+            <input type="text" id="f-city" placeholder="Austin, TX">
           </div>
           <div class="form-group">
             <label>Tell us about your project</label>
-            <textarea placeholder="Describe your yard, what you need, and any details that would help us give you an accurate quote…"></textarea>
+            <textarea id="f-message" placeholder="Describe your yard, what you need, and any details that would help us give you an accurate quote…"></textarea>
           </div>
+          <div id="form-error" style="display:none;color:#dc2626;font-size:13px;margin-bottom:12px"></div>
           <button type="submit" class="btn-primary form-submit">Send My Request →</button>
         </form>
       </div>
@@ -739,18 +740,40 @@
 </footer>
 
 <script>
-function submitForm(e) {
+async function submitForm(e) {
   e.preventDefault();
   const btn = e.target.querySelector('.form-submit');
-  btn.textContent = '✓ Request Sent!';
-  btn.style.background = '#2D6A4F';
+  const errEl = document.getElementById('form-error');
+  errEl.style.display = 'none';
+  btn.textContent = 'Sending…';
   btn.disabled = true;
-  setTimeout(() => {
-    btn.textContent = 'Send My Request →';
-    btn.style.background = '';
-    btn.disabled = false;
+
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        firstName: document.getElementById('f-first').value.trim(),
+        lastName:  document.getElementById('f-last').value.trim(),
+        phone:     document.getElementById('f-phone').value.trim(),
+        email:     document.getElementById('f-email').value.trim(),
+        service:   document.getElementById('f-service').value,
+        city:      document.getElementById('f-city').value.trim(),
+        message:   document.getElementById('f-message').value.trim(),
+      }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Something went wrong');
+    btn.textContent = '✓ Request Sent!';
+    btn.style.background = '#2D6A4F';
     e.target.reset();
-  }, 4000);
+    setTimeout(() => { btn.textContent = 'Send My Request →'; btn.style.background = ''; btn.disabled = false; }, 5000);
+  } catch(err) {
+    errEl.textContent = err.message;
+    errEl.style.display = 'block';
+    btn.textContent = 'Send My Request →';
+    btn.disabled = false;
+  }
 }
 
 // Smooth scroll for nav links
