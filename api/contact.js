@@ -5,7 +5,11 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const key = process.env.RESEND_API_KEY;
+  const key          = process.env.RESEND_API_KEY;
+  const supabaseUrl  = process.env.SUPABASE_URL  || 'https://hzcgdnhecgewqpcnumwm.supabase.co';
+  const supabaseKey  = process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_ANON_KEY;
+  const clientId     = process.env.CLIENT_ID; // Premier Landscaping client ID in Evan Enterprises
+
   if (!key) return res.status(500).json({ error: 'Email not configured' });
 
   const { firstName, lastName, phone, email, service, city, message } = req.body || {};
@@ -48,6 +52,31 @@ export default async function handler(req, res) {
 
     const data = await r.json();
     if (!r.ok) return res.status(r.status).json({ error: data.message || 'Send failed' });
+
+    // Save lead to Evan Enterprises dashboard
+    if (supabaseKey) {
+      fetch(`${supabaseUrl}/rest/v1/form_leads`, {
+        method: 'POST',
+        headers: {
+          apikey: supabaseKey,
+          Authorization: `Bearer ${supabaseKey}`,
+          'Content-Type': 'application/json',
+          Prefer: 'return=minimal',
+        },
+        body: JSON.stringify({
+          client_id:     clientId || null,
+          source:        'Premier Landscaping ATX — Quote Form',
+          customer_name: `${firstName} ${lastName || ''}`.trim(),
+          customer_phone: phone || null,
+          customer_email: email || null,
+          service:       service || null,
+          city:          city || null,
+          message:       message || null,
+          status:        'new',
+        }),
+      }).catch(() => {}); // fire and forget — never block the email
+    }
+
     return res.status(200).json({ ok: true });
   } catch (e) {
     return res.status(500).json({ error: e.message });
