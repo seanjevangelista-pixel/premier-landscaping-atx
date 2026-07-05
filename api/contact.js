@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   const key          = process.env.RESEND_API_KEY;
   const supabaseUrl  = process.env.SUPABASE_URL  || 'https://hzcgdnhecgewqpcnumwm.supabase.co';
   const supabaseKey  = process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_ANON_KEY;
-  const clientId     = process.env.CLIENT_ID; // Premier Landscaping client ID in Evan Enterprises
+  const clientId     = 'cb4b702b-7e43-4c20-8cec-a5d772bd952c'; // Premier Landscaping ATX
 
   if (!key) return res.status(500).json({ error: 'Email not configured' });
 

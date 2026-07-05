@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "premier-landscaping",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "4200"],
-      "port": 4200
+      "name": "premier-site",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "4321", "."],
+      "port": 4321
     }
   ]
 }

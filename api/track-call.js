@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   const resendKey  = process.env.RESEND_API_KEY;
   const sbUrl      = process.env.SUPABASE_URL;
   const sbKey      = process.env.SUPABASE_ANON_KEY;
-  const clientId   = process.env.CLIENT_ID; // Premier Landscaping ATX row ID in clients table
+  const clientId   = 'cb4b702b-7e43-4c20-8cec-a5d772bd952c'; // Premier Landscaping ATX
 
   const { source = 'unknown', ts, ua } = req.body || {};
   const time = ts
