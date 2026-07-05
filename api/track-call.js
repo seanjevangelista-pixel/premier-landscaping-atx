@@ -8,7 +8,13 @@ export default async function handler(req, res) {
   const resendKey  = process.env.RESEND_API_KEY;
   const sbUrl      = process.env.SUPABASE_URL;
   const sbKey      = process.env.SUPABASE_ANON_KEY;
-  const clientId   = 'cb4b702b-7e43-4c20-8cec-a5d772bd952c'; // Premier Landscaping ATX
+  // Auto-lookup client ID by domain
+  let clientId = null;
+  try {
+    const lookup = await fetch('https://evan-enterprises-os.vercel.app/api/client-lookup?domain=premierlandscapingatx.com');
+    const ldata  = await lookup.json();
+    if (ldata.client?.id) clientId = ldata.client.id;
+  } catch (_) {}
 
   const { source = 'unknown', ts, ua } = req.body || {};
   const time = ts

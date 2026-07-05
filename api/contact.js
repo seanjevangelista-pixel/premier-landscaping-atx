@@ -8,7 +8,14 @@ export default async function handler(req, res) {
   const key          = process.env.RESEND_API_KEY;
   const supabaseUrl  = process.env.SUPABASE_URL  || 'https://hzcgdnhecgewqpcnumwm.supabase.co';
   const supabaseKey  = process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_ANON_KEY;
-  const clientId     = 'cb4b702b-7e43-4c20-8cec-a5d772bd952c'; // Premier Landscaping ATX
+
+  // Auto-lookup client ID by domain — works for any client site
+  let clientId = null;
+  try {
+    const lookup = await fetch(`https://evan-enterprises-os.vercel.app/api/client-lookup?domain=premierlandscapingatx.com`);
+    const data   = await lookup.json();
+    if (data.client?.id) clientId = data.client.id;
+  } catch (_) {}
 
   if (!key) return res.status(500).json({ error: 'Email not configured' });
 
