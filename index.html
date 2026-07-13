@@ -1324,30 +1324,6 @@ async function submitForm(e) {
   }
 }
 
-// ── Stat counters
-function animateCounter(el) {
-  const target = parseInt(el.dataset.count);
-  const suffix = el.dataset.suffix || '';
-  const duration = 1400;
-  const start = performance.now();
-  function step(now) {
-    const p = Math.min((now - start) / duration, 1);
-    const ease = 1 - Math.pow(1 - p, 3);
-    const val = Math.round(ease * target);
-    el.innerHTML = val + '<span>' + suffix + '</span>';
-    if (p < 1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-}
-(function() {
-  const counters = document.querySelectorAll('.hero-stat .n[data-count]');
-  if (!counters.length) return;
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); obs.unobserve(e.target); } });
-  }, { threshold: 0.5 });
-  counters.forEach(c => obs.observe(c));
-})();
-
 // ── FAQ accordion
 function toggleFaq(btn) {
   const item = btn.closest('.faq-item');
