@@ -1407,7 +1407,7 @@ function animateCounter(el, target, suffix, duration) {
     if (!start) start = ts;
     const prog = Math.min((ts - start) / duration, 1);
     const ease = 1 - Math.pow(1 - prog, 3);
-    el.textContent = Math.floor(ease * target) + suffix;
+    el.textContent = Math.floor(ease * target);
     if (prog < 1) requestAnimationFrame(step);
   };
   requestAnimationFrame(step);
