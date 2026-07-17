@@ -6,8 +6,8 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
   const resendKey  = process.env.RESEND_API_KEY;
-  const sbUrl      = process.env.SUPABASE_URL;
-  const sbKey      = process.env.SUPABASE_ANON_KEY;
+  const sbUrl      = process.env.SUPABASE_URL || 'https://hzcgdnhecgewqpcnumwm.supabase.co';
+  const sbKey      = process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_ANON_KEY;
   // Auto-lookup client ID by domain
   let clientId = null;
   try {
