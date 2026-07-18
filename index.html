@@ -1417,16 +1417,14 @@ const statsObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
     const statEls = entry.target.querySelectorAll('.hero-stat .n');
-    const configs = [
-      { target: 8, suffix: '+' },
-      { target: 100, suffix: '%' },
-      { target: 'Free', suffix: '' },
-    ];
-    statEls.forEach((el, i) => {
-      const cfg = configs[i];
+    statEls.forEach((el) => {
+      const hasCount = el.dataset.count !== undefined;
       const spanHtml = el.innerHTML.match(/<span>(.*?)<\/span>/)?.[1] || '';
+      const rawTarget = hasCount ? el.dataset.count : el.textContent.trim();
+      const target = hasCount && !isNaN(rawTarget) ? Number(rawTarget) : rawTarget;
+      const suffix = el.dataset.suffix || '';
       el.innerHTML = '';
-      animateCounter(el, cfg.target, cfg.suffix, 1200);
+      animateCounter(el, target, suffix, 1200);
       if (spanHtml) {
         setTimeout(() => {
           const span = document.createElement('span');
