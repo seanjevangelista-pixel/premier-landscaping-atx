@@ -1310,8 +1310,9 @@ async function submitForm(e) {
         message:   document.getElementById('f-message').value.trim(),
       }),
     });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || 'Something went wrong');
+    let data = {};
+    try { data = await res.json(); } catch (_) { /* non-JSON response (e.g. server crash/timeout) */ }
+    if (!res.ok) throw new Error(data.error || 'Something went wrong. Please call us at (512) 923-0307.');
     btn.textContent = '✦ Estimate Requested — We\'ll Be in Touch';
     btn.style.background = 'var(--green-mid)';
     e.target.reset();
